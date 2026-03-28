@@ -1,6 +1,7 @@
 
 
 
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,25 +19,25 @@ body{
 
 /* SIDEBAR */
 .sidebar{
-  width:210px;
+  width:220px;
   background:rgba(15,23,42,0.55);
   backdrop-filter:blur(22px);
   border-right:1px solid rgba(255,255,255,0.08);
-  padding:22px 16px;
+  padding:26px 18px;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:12px;
   box-shadow:4px 0 20px rgba(0,0,0,0.35);
 }
 .sidebar-title{
-  font-size:20px;
+  font-size:22px;
   font-weight:600;
-  margin-bottom:14px;
+  margin-bottom:16px;
   color:#93c5fd;
 }
 .sidebar button{
   width:100%;
-  padding:13px 14px;
+  padding:14px 16px;
   border-radius:14px;
   border:none;
   background:rgba(255,255,255,0.06);
@@ -49,24 +50,25 @@ body{
 .sidebar button:hover,
 .sidebar button.active{
   background:rgba(255,255,255,0.18);
-  transform:translateX(4px);
+  transform:translateX(6px);
 }
 
-/* MAIN PANEL */
+/* MAIN AREA */
 .main{
   flex:1;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+  overflow-y:auto;
+  padding:40px;
 }
+
+/* PANEL */
 .panel{
-  width:520px;
+  max-width:620px;
+  margin:0 auto 60px auto;
   background:rgba(255,255,255,0.06);
   backdrop-filter:blur(28px);
   border-radius:26px;
   border:1px solid rgba(255,255,255,0.12);
-  padding:26px;
+  padding:32px;
   box-shadow:0 25px 60px rgba(0,0,0,0.45);
   animation:fadeIn .4s ease;
 }
@@ -75,15 +77,16 @@ body{
   to{opacity:1;transform:translateY(0);}
 }
 .panel h2{
-  font-size:22px;
+  font-size:24px;
   font-weight:600;
-  margin-bottom:16px;
+  margin-bottom:18px;
   color:#bfdbfe;
 }
+
 input,textarea{
   width:100%;
-  padding:13px;
-  margin-top:12px;
+  padding:14px;
+  margin-top:14px;
   border-radius:14px;
   border:1px solid rgba(255,255,255,0.12);
   background:rgba(255,255,255,0.08);
@@ -96,17 +99,17 @@ input:focus,textarea:focus{
   border-color:#60a5fa;
   background:rgba(255,255,255,0.12);
 }
-textarea{height:100px;resize:none;}
+textarea{height:110px;resize:none;}
 
 button.send-btn{
   width:100%;
-  margin-top:20px;
-  padding:14px;
+  margin-top:24px;
+  padding:15px;
   border-radius:14px;
   border:none;
   background:linear-gradient(135deg,#3b82f6,#2563eb);
   color:white;
-  font-size:16px;
+  font-size:17px;
   font-weight:600;
   cursor:pointer;
   transition:0.25s;
@@ -135,7 +138,7 @@ button.send-btn:hover{
   <button onclick="showForm('ping')" id="btn-ping">Ping</button>
 </div>
 
-<!-- MAIN PANEL -->
+<!-- MAIN -->
 <div class="main">
   <div class="panel" id="panel">
     <h2>Select an action</h2>
@@ -144,7 +147,7 @@ button.send-btn:hover{
 </div>
 
 <script>
-/* WEBHOOKS (EXACT STRINGS) */
+/* WEBHOOKS */
 const WH_PUNISH  = "https://discord.com/api/webhooks/1487259518747279551/Fd4NWmGoJY-dLP9k3YpaBwYVljvhNllM95nQXk_Efoq5uaE-AIfX6WRmoz5NjcHq2-v";
 const WH_MSG     = "https://discord.com/api/webhooks/1487260095828988096/WDRCzlERI7F98xj9qtnimt4zRXvhNllM95nQX88863GSltJtcMp64sdzeobx4auGb2I7";
 const WH_PARTNER = "https://discord.com/api/webhooks/1487256678507479112/fxsKoLZKQKndL9t5NLoNLQarkZvA6iaGhxBsI7_SBw8tdQAOq5Piw79xMUsExay9uqLK";
@@ -152,8 +155,6 @@ const WH_PARTNER = "https://discord.com/api/webhooks/1487256678507479112/fxsKoLZ
 function showForm(type){
   document.querySelectorAll(".sidebar button").forEach(b=>b.classList.remove("active"));
   document.getElementById("btn-"+type).classList.add("active");
-
-  let html="";
 
   const forms={
     part:`
