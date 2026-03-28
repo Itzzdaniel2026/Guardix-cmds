@@ -1,118 +1,120 @@
 
 
 
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Moderation Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  background: #0f172a;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
-  color: #e2e8f0;
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;}
+body{
+  height:100vh;
+  display:flex;
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:#e2e8f0;
+  overflow:hidden;
 }
 
 /* SIDEBAR */
-.sidebar {
-  width: 180px;
-  background: rgba(15,23,42,0.6);
-  backdrop-filter: blur(18px);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  padding: 20px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.sidebar{
+  width:210px;
+  background:rgba(15,23,42,0.55);
+  backdrop-filter:blur(22px);
+  border-right:1px solid rgba(255,255,255,0.08);
+  padding:22px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  box-shadow:4px 0 20px rgba(0,0,0,0.35);
 }
-
-.sidebar-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #93c5fd;
+.sidebar-title{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:14px;
+  color:#93c5fd;
 }
-
-.sidebar button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: rgba(255,255,255,0.06);
-  color: #e2e8f0;
-  font-size: 14px;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.2s;
+.sidebar button{
+  width:100%;
+  padding:13px 14px;
+  border-radius:14px;
+  border:none;
+  background:rgba(255,255,255,0.06);
+  color:#e2e8f0;
+  font-size:15px;
+  text-align:left;
+  cursor:pointer;
+  transition:0.25s;
 }
-
 .sidebar button:hover,
-.sidebar button.active {
-  background: rgba(255,255,255,0.14);
+.sidebar button.active{
+  background:rgba(255,255,255,0.18);
+  transform:translateX(4px);
 }
 
 /* MAIN PANEL */
-.main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.main{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
 }
-
-.panel {
-  width: 480px;
-  background: rgba(15,23,42,0.75);
-  backdrop-filter: blur(22px);
-  border-radius: 22px;
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+.panel{
+  width:520px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(28px);
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,0.12);
+  padding:26px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.45);
+  animation:fadeIn .4s ease;
 }
-
-.panel h2 {
-  margin: 0 0 14px 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #bfdbfe;
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
 }
-
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.05);
-  color: #e2e8f0;
-  outline: none;
-  font-size: 14px;
+.panel h2{
+  font-size:22px;
+  font-weight:600;
+  margin-bottom:16px;
+  color:#bfdbfe;
 }
-
-textarea {
-  height: 90px;
-  resize: none;
+input,textarea{
+  width:100%;
+  padding:13px;
+  margin-top:12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.08);
+  color:#e2e8f0;
+  font-size:15px;
+  outline:none;
+  transition:0.2s;
 }
-
-button.send-btn {
-  width: 100%;
-  margin-top: 16px;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: #3b82f6;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.2s;
+input:focus,textarea:focus{
+  border-color:#60a5fa;
+  background:rgba(255,255,255,0.12);
 }
+textarea{height:100px;resize:none;}
 
-button.send-btn:hover {
-  background: #60a5fa;
+button.send-btn{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  border-radius:14px;
+  border:none;
+  background:linear-gradient(135deg,#3b82f6,#2563eb);
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.25s;
+  box-shadow:0 12px 28px rgba(37,99,235,0.45);
+}
+button.send-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px rgba(37,99,235,0.6);
 }
 </style>
 </head>
@@ -142,244 +144,208 @@ button.send-btn:hover {
 </div>
 
 <script>
-/* WEBHOOKS */
+/* WEBHOOKS (EXACT STRINGS) */
 const WH_PUNISH  = "https://discord.com/api/webhooks/1487259518747279551/Fd4NWmGoJY-dLP9k3YpaBwYVljvhNllM95nQXk_Efoq5uaE-AIfX6WRmoz5NjcHq2-v";
 const WH_MSG     = "https://discord.com/api/webhooks/1487260095828988096/WDRCzlERI7F98xj9qtnimt4zRXvhNllM95nQX88863GSltJtcMp64sdzeobx4auGb2I7";
 const WH_PARTNER = "https://discord.com/api/webhooks/1487256678507479112/fxsKoLZKQKndL9t5NLoNLQarkZvA6iaGhxBsI7_SBw8tdQAOq5Piw79xMUsExay9uqLK";
 
-function showForm(type) {
-  document.querySelectorAll(".sidebar button").forEach(b => b.classList.remove("active"));
-  document.getElementById("btn-" + type).classList.add("active");
+function showForm(type){
+  document.querySelectorAll(".sidebar button").forEach(b=>b.classList.remove("active"));
+  document.getElementById("btn-"+type).classList.add("active");
 
-  let html = "";
+  let html="";
 
-  if (type === "part") {
-    html = `
+  const forms={
+    part:`
       <h2>Partnership</h2>
       <input id="server" placeholder="Server Name">
       <input id="owner" placeholder="Server Owner">
       <input id="logo" placeholder="Logo URL">
       <button class="send-btn" onclick="sendPart()">Send</button>
-    `;
-  }
-
-  if (type === "blacklist") {
-    html = `
+    `,
+    blacklist:`
       <h2>Blacklist User</h2>
       <input id="user" placeholder="Username">
       <input id="id" placeholder="Discord ID">
       <textarea id="reason" placeholder="Reason"></textarea>
       <button class="send-btn" onclick="sendBlacklist()">Send</button>
-    `;
-  }
-
-  if (type === "warn") {
-    html = `
+    `,
+    warn:`
       <h2>Warn User</h2>
       <input id="id" placeholder="Discord ID">
       <textarea id="reason" placeholder="Reason"></textarea>
       <button class="send-btn" onclick="sendWarn()">Send</button>
-    `;
-  }
-
-  if (type === "kick") {
-    html = `
+    `,
+    kick:`
       <h2>Kick User</h2>
       <input id="id" placeholder="Discord ID">
       <textarea id="reason" placeholder="Reason"></textarea>
       <button class="send-btn" onclick="sendKick()">Send</button>
-    `;
-  }
-
-  if (type === "ban") {
-    html = `
+    `,
+    ban:`
       <h2>Ban User</h2>
       <input id="id" placeholder="Discord ID">
       <textarea id="reason" placeholder="Reason"></textarea>
       <button class="send-btn" onclick="sendBan()">Send</button>
-    `;
-  }
-
-  if (type === "unblacklist") {
-    html = `
+    `,
+    unblacklist:`
       <h2>Unblacklist User</h2>
       <input id="id" placeholder="Discord ID">
       <button class="send-btn" onclick="sendUnblacklist()">Send</button>
-    `;
-  }
-
-  if (type === "msg") {
-    html = `
+    `,
+    msg:`
       <h2>Send Message</h2>
       <textarea id="msg" placeholder="Message"></textarea>
       <button class="send-btn" onclick="sendMsg()">Send</button>
-    `;
-  }
-
-  if (type === "say") {
-    html = `
+    `,
+    say:`
       <h2>Send Embed Message</h2>
       <textarea id="msg" placeholder="Message"></textarea>
       <button class="send-btn" onclick="sendSay()">Send</button>
-    `;
-  }
-
-  if (type === "embed") {
-    html = `
+    `,
+    embed:`
       <h2>Custom Embed</h2>
       <input id="title" placeholder="Title">
       <textarea id="desc" placeholder="Description"></textarea>
       <input id="color" placeholder="Color (hex)">
       <input id="thumb" placeholder="Thumbnail URL (optional)">
       <button class="send-btn" onclick="sendEmbed()">Send</button>
-    `;
-  }
-
-  if (type === "ping") {
-    html = `
+    `,
+    ping:`
       <h2>Ping</h2>
       <button class="send-btn" onclick="sendPing()">Send Ping</button>
-    `;
-  }
+    `
+  };
 
-  document.getElementById("panel").innerHTML = html;
+  document.getElementById("panel").innerHTML=forms[type];
 }
 
-/* SEND FUNCTIONS */
-function sendWebhook(url, payload) {
-  fetch(url, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(payload)
+/* SEND HELPERS */
+function sendWebhook(url,payload){
+  fetch(url,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(payload)
   });
 }
 
-/* PARTNERSHIP */
-function sendPart() {
-  sendWebhook(WH_PARTNER, {
-    username: "Partnership",
-    embeds: [{
-      title: "New Partnership",
-      color: 0x3b82f6,
-      thumbnail: { url: document.getElementById("logo").value },
-      fields: [
-        { name: "Server", value: document.getElementById("server").value },
-        { name: "Owner", value: document.getElementById("owner").value }
+/* ACTIONS */
+function sendPart(){
+  sendWebhook(WH_PARTNER,{
+    username:"Partnership",
+    embeds:[{
+      title:"New Partnership",
+      color:0x3b82f6,
+      thumbnail:{url:document.getElementById("logo").value},
+      fields:[
+        {name:"Server",value:document.getElementById("server").value},
+        {name:"Owner",value:document.getElementById("owner").value}
       ]
     }]
   });
 }
 
-/* BLACKLIST */
-function sendBlacklist() {
-  sendWebhook(WH_PUNISH, {
-    username: "Blacklist",
-    embeds: [{
-      title: "User Blacklisted",
-      color: 0x000000,
-      fields: [
-        { name: "Username", value: document.getElementById("user").value },
-        { name: "ID", value: document.getElementById("id").value },
-        { name: "Reason", value: document.getElementById("reason").value }
+function sendBlacklist(){
+  sendWebhook(WH_PUNISH,{
+    username:"Blacklist",
+    embeds:[{
+      title:"User Blacklisted",
+      color:0x000000,
+      fields:[
+        {name:"Username",value:document.getElementById("user").value},
+        {name:"ID",value:document.getElementById("id").value},
+        {name:"Reason",value:document.getElementById("reason").value}
       ]
     }]
   });
 }
 
-/* WARN */
-function sendWarn() {
-  sendWebhook(WH_PUNISH, {
-    username: "Warn",
-    embeds: [{
-      title: "User Warned",
-      color: 0xfacc15,
-      fields: [
-        { name: "ID", value: document.getElementById("id").value },
-        { name: "Reason", value: document.getElementById("reason").value }
+function sendWarn(){
+  sendWebhook(WH_PUNISH,{
+    username:"Warn",
+    embeds:[{
+      title:"User Warned",
+      color:0xfacc15,
+      fields:[
+        {name:"ID",value:document.getElementById("id").value},
+        {name:"Reason",value:document.getElementById("reason").value}
       ]
     }]
   });
 }
 
-/* KICK */
-function sendKick() {
-  sendWebhook(WH_PUNISH, {
-    username: "Kick",
-    embeds: [{
-      title: "User Kicked",
-      color: 0xf97316,
-      fields: [
-        { name: "ID", value: document.getElementById("id").value },
-        { name: "Reason", value: document.getElementById("reason").value }
+function sendKick(){
+  sendWebhook(WH_PUNISH,{
+    username:"Kick",
+    embeds:[{
+      title:"User Kicked",
+      color:0xf97316,
+      fields:[
+        {name:"ID",value:document.getElementById("id").value},
+        {name:"Reason",value:document.getElementById("reason").value}
       ]
     }]
   });
 }
 
-/* BAN */
-function sendBan() {
-  sendWebhook(WH_PUNISH, {
-    username: "Ban",
-    embeds: [{
-      title: "User Banned",
-      color: 0xef4444,
-      fields: [
-        { name: "ID", value: document.getElementById("id").value },
-        { name: "Reason", value: document.getElementById("reason").value }
+function sendBan(){
+  sendWebhook(WH_PUNISH,{
+    username:"Ban",
+    embeds:[{
+      title:"User Banned",
+      color:0xef4444,
+      fields:[
+        {name:"ID",value:document.getElementById("id").value},
+        {name:"Reason",value:document.getElementById("reason").value}
       ]
     }]
   });
 }
 
-/* UNBLACKLIST */
-function sendUnblacklist() {
-  sendWebhook(WH_PUNISH, {
-    username: "Unblacklist",
-    embeds: [{
-      title: "User Unblacklisted",
-      color: 0x22c55e,
-      fields: [
-        { name: "ID", value: document.getElementById("id").value }
+function sendUnblacklist(){
+  sendWebhook(WH_PUNISH,{
+    username:"Unblacklist",
+    embeds:[{
+      title:"User Unblacklisted",
+      color:0x22c55e,
+      fields:[
+        {name:"ID",value:document.getElementById("id").value}
       ]
     }]
   });
 }
 
-/* MESSAGE */
-function sendMsg() {
-  sendWebhook(WH_MSG, {
-    username: "Message",
-    content: document.getElementById("msg").value
+function sendMsg(){
+  sendWebhook(WH_MSG,{
+    username:"Message",
+    content:document.getElementById("msg").value
   });
 }
 
-/* SAY */
-function sendSay() {
-  sendWebhook(WH_MSG, {
-    username: "Say",
-    embeds: [{
-      description: document.getElementById("msg").value,
-      color: 0x3b82f6
+function sendSay(){
+  sendWebhook(WH_MSG,{
+    username:"Say",
+    embeds:[{
+      description:document.getElementById("msg").value,
+      color:0x3b82f6
     }]
   });
 }
 
-/* EMBED */
-function sendEmbed() {
-  sendWebhook(WH_MSG, {
-    username: "Embed",
-    embeds: [{
-      title: document.getElementById("title").value,
-      description: document.getElementById("desc").value,
-      color: parseInt(document.getElementById("color").value.replace("#",""), 16),
-      thumbnail: { url: document.getElementById("thumb").value }
+function sendEmbed(){
+  sendWebhook(WH_MSG,{
+    username:"Embed",
+    embeds:[{
+      title:document.getElementById("title").value,
+      description:document.getElementById("desc").value,
+      color:parseInt(document.getElementById("color").value.replace("#",""),16),
+      thumbnail:{url:document.getElementById("thumb").value}
     }]
   });
 }
 
-/* PING */
-function sendPing() {
-  sendWebhook(WH_MSG, { content: "Ping!" });
+function sendPing(){
+  sendWebhook(WH_MSG,{content:"Ping!"});
 }
 </script>
 
