@@ -2,11 +2,10 @@
 
 
 
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Moderation Command Console</title>
+<title>Glassy Command Console</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 * { box-sizing: border-box; }
@@ -15,122 +14,114 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #020617;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #1f2933 0, #020617 55%);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   color: #e5e7eb;
 }
 
-/* SIDEBAR */
-.sidebar {
-  width: 120px;
-  background: #020617;
-  border-right: 1px solid rgba(31,41,55,1);
-  display: flex;
-  flex-direction: column;
-  padding: 12px 8px;
-}
-
-.sidebar-logo {
-  height: 40px;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: #60a5fa;
-  font-size: 18px;
-}
-
-.sidebar-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 4px;
-  border-radius: 10px;
-  cursor: pointer;
-  color: #9ca3af;
-  margin-bottom: 6px;
-  transition: background .2s, color .2s;
-  font-size: 12px;
-}
-
-.sidebar-item span.icon {
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-
-.sidebar-item.active,
-.sidebar-item:hover {
-  background: #111827;
-  color: #e5e7eb;
-}
-
-/* MAIN PANEL */
-.main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
+/* GLASS PANEL */
 .panel {
-  width: 720px;
-  background: rgba(15,23,42,0.9);
-  border-radius: 18px;
-  border: 1px solid rgba(148,163,184,0.3);
-  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+  width: 520px;
+  max-width: 92vw;
+  background: rgba(15,23,42,0.78);
+  border-radius: 24px;
+  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.65),
+    0 0 0 1px rgba(15,23,42,0.9);
+  backdrop-filter: blur(22px);
   padding: 18px 18px 14px;
   display: flex;
   flex-direction: column;
 }
 
 /* HEADER */
-.panel-header {
+.header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.panel-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #bfdbfe;
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.panel-sub {
+.badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 20%, #60a5fa, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 6px 16px rgba(37,99,235,0.7);
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
   font-size: 12px;
   color: #9ca3af;
 }
 
+/* STATUS PILL */
+.status-pill {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15,118,110,0.18);
+  border: 1px solid rgba(45,212,191,0.4);
+  font-size: 11px;
+  color: #a5f3fc;
+}
+
 /* OUTPUT */
 .output {
+  margin-top: 8px;
   flex: 1;
-  background: #020617;
-  border-radius: 12px;
-  border: 1px solid rgba(31,41,55,1);
-  padding: 10px;
+  min-height: 210px;
+  max-height: 260px;
+  background: radial-gradient(circle at top left, rgba(30,64,175,0.18), rgba(15,23,42,0.9));
+  border-radius: 18px;
+  border: 1px solid rgba(31,41,55,0.9);
+  padding: 10px 11px;
   font-size: 13px;
   overflow-y: auto;
-  margin-bottom: 10px;
 }
 
 /* INPUT ROW */
 .input-row {
+  margin-top: 10px;
   display: flex;
   gap: 8px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(55,65,81,1);
-  background: #020617;
+  padding: 11px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(55,65,81,0.9);
+  background: rgba(15,23,42,0.9);
   color: #e5e7eb;
   outline: none;
   font-size: 14px;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
 input::placeholder {
@@ -139,26 +130,37 @@ input::placeholder {
 
 input:focus {
   border-color: #3b82f6;
-  box-shadow: 0 0 0 1px #3b82f6;
+  box-shadow: 0 0 0 1px rgba(59,130,246,0.7);
+  background: rgba(15,23,42,0.96);
 }
 
 button {
   padding: 0 16px;
-  border-radius: 10px;
+  border-radius: 999px;
   border: none;
-  background: #3b82f6;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
+  box-shadow: 0 8px 18px rgba(37,99,235,0.55);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
 }
 
 button:hover {
-  background: #60a5fa;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(37,99,235,0.7);
+  filter: brightness(1.03);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(37,99,235,0.55);
 }
 
 /* LOG LINES */
 .log-line {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   line-height: 1.3;
 }
 
@@ -175,52 +177,34 @@ button:hover {
 </head>
 <body>
 
-<div class="sidebar">
-  <div class="sidebar-logo">MOD</div>
-  <div class="sidebar-item active">
-    <span class="icon">🏠</span>
-    <span>Home</span>
-  </div>
-  <div class="sidebar-item">
-    <span class="icon">💻</span>
-    <span>Commands</span>
-  </div>
-  <div class="sidebar-item">
-    <span class="icon">📜</span>
-    <span>Logs</span>
-  </div>
-  <div class="sidebar-item">
-    <span class="icon">⚙</span>
-    <span>Settings</span>
-  </div>
-</div>
-
-<div class="main">
-  <div class="panel">
-    <div class="panel-header">
-      <div>
-        <div class="panel-title">Command Console</div>
-        <div class="panel-sub">Type <strong>!help</strong> to see all commands</div>
+<div class="panel">
+  <div class="header">
+    <div class="header-left">
+      <div class="badge">M</div>
+      <div class="title-block">
+        <div class="title">Moderation Console</div>
+        <div class="subtitle">Type <strong>!help</strong> to view all commands</div>
       </div>
     </div>
+    <div class="status-pill">Connected • Local</div>
+  </div>
 
-    <div class="output" id="output"></div>
+  <div class="output" id="output"></div>
 
-    <div class="input-row">
-      <input id="cmd" placeholder='Example: !msg "Hello world"'>
-      <button onclick="runCommand()">Run</button>
-    </div>
+  <div class="input-row">
+    <input id="cmd" placeholder='Example: !msg "Hello world"'>
+    <button onclick="runCommand()">Run</button>
   </div>
 </div>
 
 <script>
-/* WEBHOOKS */
-const WEBHOOK_PUNISH = "https://discord.com/api/webhooks/1487259518747279551/Fd4NWmGoJY-dLP9k3YpaBwYVljvhNllM95nQXk_Efoq5uaE-AIfX6WRmoz5NjcHq2-v".replace("k_","k_"); // keep as given
-const WEBHOOK_MSG = "https://discord.com/api/webhooks/1487260095828988096/WDRCzlERI7F98xj9qtnimt4zRXvhNllM95nQX88863GSltJtcMp64sdzeobx4auGb2I7";
+/* WEBHOOKS (EXACT STRINGS YOU GAVE) */
+const WEBHOOK_PUNISH  = "https://discord.com/api/webhooks/1487259518747279551/Fd4NWmGoJY-dLP9k3YpaBwYVljvhNllM95nQXk_Efoq5uaE-AIfX6WRmoz5NjcHq2-v";
+const WEBHOOK_MSG     = "https://discord.com/api/webhooks/1487260095828988096/WDRCzlERI7F98xj9qtnimt4zRXvhNllM95nQX88863GSltJtcMp64sdzeobx4auGb2I7";
 const WEBHOOK_PARTNER = "https://discord.com/api/webhooks/1487256678507479112/fxsKoLZKQKndL9t5NLoNLQarkZvA6iaGhxBsI7_SBw8tdQAOq5Piw79xMUsExay9uqLK";
 
 const cmdInput = document.getElementById("cmd");
-const output = document.getElementById("output");
+const output   = document.getElementById("output");
 
 /* ENTER KEY */
 cmdInput.addEventListener("keydown", e => {
@@ -254,17 +238,21 @@ function runCommand() {
   cmdInput.value = "";
 
   if (raw === "!help") return showHelp();
+
+  // Message / utility
   if (raw.startsWith("!msg ")) return handleMsg(raw);
   if (raw.startsWith("!say ")) return handleSay(raw);
   if (raw === "!embed") return handleEmbed();
   if (raw === "!ping") return handlePing();
 
+  // Punishments
   if (raw.startsWith("!warn ")) return handleWarn(raw);
   if (raw.startsWith("!kick ")) return handleKick(raw);
-  if (raw.startsWith("!ban ")) return handleBan(raw);
-  if (raw === "!blacklist") return handleBlacklist();
+  if (raw.startsWith("!ban "))  return handleBan(raw);
+  if (raw === "!blacklist")     return handleBlacklist();
   if (raw.startsWith("!unblacklist ")) return handleUnblacklist(raw);
 
+  // Partnership
   if (raw === "!part") return handlePart();
 
   log("Unknown command. Type !help");
@@ -327,14 +315,8 @@ function handleEmbed() {
     color = parseInt(colorInput.replace("#",""), 16);
   }
 
-  const embed = {
-    title,
-    description,
-    color
-  };
-  if (thumb.trim()) {
-    embed.thumbnail = { url: thumb.trim() };
-  }
+  const embed = { title, description, color };
+  if (thumb.trim()) embed.thumbnail = { url: thumb.trim() };
 
   const payload = { username: "Console Embed", embeds: [embed] };
   sendWebhook(WEBHOOK_MSG, payload, "Custom embed sent.", "Failed to send custom embed.");
@@ -342,7 +324,7 @@ function handleEmbed() {
 
 function handlePing() {
   const start = performance.now();
-  const payload = { content: "Ping test..." };
+  const payload = { content: "Ping..." };
   sendWebhook(WEBHOOK_MSG, payload, null, "Ping failed.", () => {
     const ms = Math.round(performance.now() - start);
     log("Pong! Latency: " + ms + "ms");
@@ -479,7 +461,7 @@ function sendWebhook(url, payload, successMsg, errorMsg, onSuccess) {
   });
 }
 
-/* INITIAL HELP HINT */
+/* INITIAL HINT */
 log("Type !help to see all commands.");
 </script>
 
